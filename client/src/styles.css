@@ -1,0 +1,9 @@
+/* You can add global styles to this file, and also import other style files */
+#login-form {
+  height: 60%;
+  box-shadow: 0 0 10px black;
+  /* background-color: lightblue; */
+  padding-top:60px;
+  /* padding-top: 9%; */
+  font-weight: 100;
+}

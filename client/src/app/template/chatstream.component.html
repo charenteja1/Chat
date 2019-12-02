@@ -1,0 +1,23 @@
+<div class="chat-stream " style="position: relative;">
+  <div class="col-md-12 stream-div" style="max-height: 100%; overflow: auto;" #scrollMe [scrollTop]="scrollMe.scrollHeight">
+    <div class="col-md-8 chat-message" style="box-shadow: 0 0 10px black;word-wrap: break-word" 
+    
+     *ngFor="let message of publishedMessage" [ngClass]="{'pull-right': loggedinUserId===message.from}">
+      <div class="chat-username" [ngStyle]="{'color':loggedinUserId===message.from ? 'Blue' : 'black'}"
+      ><b>{{message.fromUserName}}</b></div>
+      {{message.message}}
+    </div>  
+  </div>
+</div>
+
+<div class="col-md-11 message-form">
+  <div *ngIf="showTypingIndicator" class="typing-indicator">{{typingUser}} is typing...</div>
+  <form (ngSubmit)="sendMessage(message)">
+    <input class="form-control col-md-12" placeholder="Message..." autocomplete="off" type="text" name="message" 
+            [(ngModel)]="message" (keypress)="sendTypeIndicator()" (click)="stopBlink()"/>
+  </form>  
+</div>
+<div class="col-md-1 message-form">
+    <i class="fas fa-paper-plane " style="font-size: 30px;" (click)="sendMessage(message); "></i>
+  <!-- <button >Send</button> -->
+</div>
